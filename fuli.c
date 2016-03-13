@@ -9,7 +9,7 @@ double F,P,i,I;//F:复利终值 P:本金 i:利率 I:利息
 int N;//利率获取时间的整数倍
 int M;//复利次数
 int a;
-printf("1.本金求复利终值  2.复利终值求本金\n");
+printf("1.本金求复利终值  2.复利终值求本金  3.本金终值求年限\n");
 scanf("%d",&a);
 if(a==1){
 printf("本金:");
@@ -36,5 +36,17 @@ printf("年复利次数:");
 scanf("%d",&M);
 P=F/pow(1+i/M*0.01,M*N);
 printf("本金:%lf\n",P);
+}
+if(a==3){
+printf("本金:");
+scanf("%lf",&P);
+printf("年利率(%%):");
+scanf("%lf",&i);
+printf("年复利次数:");
+scanf("%d",&M);
+printf("复利终值:");
+scanf("%lf",&F);
+N=log(F/P)/log(1+i/M*0.01)/M;
+printf("年限:%d\n",N);
 }
 }
