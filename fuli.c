@@ -6,7 +6,7 @@
 #include<math.h>
 #include<stdlib.h>
 #define warn1   while(0 == 
-#define warn2   ){    while('\n' != getchar())    {    }    printf("输入不合法!\n请重新输入:");        }
+#define warn2   ){    while('\n' != getchar())    {    }    printf("\t\t输入不合法!\n\t\t请重新输入:");        }
 double fuli()
 {
 	double P,i,F;//F:复利终值 P:本金 i:利率
@@ -92,16 +92,15 @@ double dingqi()
 	int m;//月数
 	int ch;
 	printf("\t\t1.按年投资  2.按月投资\n");
+    printf("\t\t");
 	warn1    scanf("%d",&ch)    warn2;
 	if(ch==1){
 		printf("\t\t年投资金额:");
 		warn1    scanf("%lf",&P)    warn2;
 		printf("\t\t年利率(%%):");
 		warn1    scanf("%lf",&i)    warn2;
-		printf("\t\t存入年限:");
+		printf("\t\t定投年数:");
 		warn1    scanf("%d",&N)    warn2;
-		printf("\t\t年复利次数:");
-		warn1    scanf("%d",&M)    warn2;
 		F=P*(1+(i*0.01))*(-1+pow(1+(i*0.01),N))/(i*0.01);
 		printf("\t\t复利终值:%lf\n",F);
 	}
@@ -110,23 +109,26 @@ double dingqi()
 		warn1    scanf("%lf",&P)    warn2;
 		printf("\t\t年利率(%%):");
 		warn1    scanf("%lf",&i)    warn2;
-		printf("\t\t存入月数:");
+		printf("\t\t定投月数:");
 		warn1    scanf("%d",&m)    warn2;
 		F=P*(1+(i*0.01/12))*(-1+pow(1+(i*0.01/12),m))/(i*0.01/12);
 		printf("\t\t终值:%lf\n",F);
 	}
+	return F;
 }
 double refund()
 {
     double P,i,mp;//mp每月还款额
-    int N;
-    printf("\t\t贷款金额：\n");
+    int N,M;
+    printf("\t\t贷款金额:");
     warn1    scanf("%lf",&P)    warn2
-    printf("\t\t年利率：\n");
+    printf("\t\t年利率:");
     warn1    scanf("%lf",&i)    warn2
-    printf("\t\t年限：\n");
-    warn1    scanf("%d",&N)    warn2   
-    mp = P*i*pow((1.0+i/12),N*12)/(pow(1.0+i/12,N*12)-1);
+    printf("\t\t年限:");
+    warn1    scanf("%d",&N)    warn2  
+	printf("\t\t年复利次数:");
+	warn1    scanf("%d",&M)    warn2;
+    mp = P*i*0.01/12*pow((1.0+i/M*0.01/12),M*N*12)/(pow(1.0+i*0.01/M/12,M*N*12)-1);
     return mp;
 
 }
